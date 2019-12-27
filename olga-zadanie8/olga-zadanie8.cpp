@@ -291,7 +291,7 @@ int main()
 	}
 	else
 	/*ZADANIE 8.1*/
-	//O, a co to za znajomy kod?
+	//O, a co to za znajomy kod? <3
 	//Dodaj do niego kolejną funkcjonalność, a mianowicie silnię w następujący sposób:
 	//1. Przesuń zakończenie programu na opcję numer 6
 	//2. Dodaj nową opcję na miejscu 5 w menu: silnia
