@@ -222,7 +222,7 @@ float x(float a, float b, float c, float d)
 
 unsigned int factorial(unsigned int a)
 {
-	if (a == 1)
+	if (a == 1 || a == 0)
 	{
 		return 1;
 	}
@@ -379,14 +379,9 @@ int main()
 					std::cout << "\n\n";
 				}
 
-				if (liczba_jeden == 0)
-				{
-					std::cout << "Twoj wynik wynosi 1." << "\n\n";
-				}
-				else
 				{
 					std::cout << "Twoj wynik wynosi: " << factorial(liczba_jeden) << "\n\n";
-				}
+				
 				break;
 
 			default:
