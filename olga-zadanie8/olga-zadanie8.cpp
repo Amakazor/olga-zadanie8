@@ -103,8 +103,9 @@ unsigned int add_all_recursive(unsigned int a)
 //zapis skrócony z użyciem operatora ternarnego
 unsigned int add_all_recursive_ternary(unsigned int a)
 {
-	return /*Warunek:*/ a == 1 ? /*jeśli spełniony:*/ 1 : /*jeśli niespełniony*/ a + add_all_recursive_ternary(a - 1);
+	return a == 1 ?  1 : a + add_all_recursive_ternary(a - 1);
 }
+
 
 //Funkcja do przykładu 8.2
 unsigned int fibonacci(unsigned int a)
@@ -118,6 +119,8 @@ unsigned int fibonacci(unsigned int a)
 		return fibonacci(a - 1) + fibonacci(a - 2);
 	}
 }
+
+
 
 //Funkcja do przykładu 8.3
 //Nie musisz analizować, szczegóły w przykładzie 8.3
@@ -209,14 +212,33 @@ std::string christmas_tree(unsigned int width, unsigned int total_width = 0)
 	{
 		return "";
 	}
+
 }
+
+float x(float a, float b, float c, float d)
+{
+	return multiply(add(a, b), add(c, d));
+}
+
+unsigned int factorial(unsigned int a)
+{
+	if (a == 1)
+	{
+		return 1;
+	}
+	else
+	{
+		return a * factorial(a - 1);
+	}
+}
+
 
 int main()
 {
 	bool example = true;
 	if (!example)
 	{
-		int current_example = 1;
+		int current_example = 4;
 
 		/*PRZYKŁAD 8.1*/
 		/*Przykład funkcji rekursywnej*/
@@ -227,7 +249,7 @@ int main()
 			//druga jest funkcją rekursywną
 			//trzecia też jest funkcją rekursywną, ale jest zapisana w krótszej postaci
 
-			std::cout << add_all(5) << '\n';
+			std::cout << add_all(155) << '\n';
 
 			std::cout << add_all_recursive(5) << '\n';
 
@@ -262,12 +284,16 @@ int main()
 			std::cout << christmas_tree(60);
 		}
 		/*KONIEC PRZYK£AD 8.3*/
+		else if (current_example == 4)
+		{
+			std::cout << x(1, 2, 3, 4);
+		}
 	}
 	else
 	/*ZADANIE 8.1*/
-	//O, a co to za znajomy kod?
+	//O, a co to za znajomy kod? <3
 	//Dodaj do niego kolejną funkcjonalność, a mianowicie silnię w następujący sposób:
-	//1. Przesuń zakończenie programu na opcję numer 7
+	//1. Przesuń zakończenie programu na opcję numer 6
 	//2. Dodaj nową opcję na miejscu 5 w menu: silnia
 	//3. Dodaj warunek wokół pobrania liczba_dwa, żeby nie była pobierana jeśli obliczamy silnię
 	//4. Stwórz funkcję rekursywną factorial(unsigned int a) obliczającą silnię argumentu a
@@ -286,15 +312,16 @@ int main()
 			bool right_try = false;
 			bool false_try = true;
 
-			std::cout << "1. Dodawanie" << "\n\n";
-			std::cout << "2. Odejmowanie" << "\n\n";
-			std::cout << "3. Dzielenie" << "\n\n";
-			std::cout << "4. Mnozenie" << "\n\n";
-			std::cout << "5. Zakoncz program" << "\n\n";
+			std::cout << "1. Dodawanie +" << "\n\n";
+			std::cout << "2. Odejmowanie -" << "\n\n";
+			std::cout << "3. Dzielenie %" << "\n\n";
+			std::cout << "4. Mnozenie *" << "\n\n";
+			std::cout << "5. Silnia !" << "\n\n";
+			std::cout << "6. Zakoncz program" << "\n\n";
 
-			u_input = parse_int_min_max(1, 5);
+			u_input = parse_int_min_max(1, 6);
 
-			if (u_input == 5)
+			if (u_input == 6)
 			{
 				break;
 			}
@@ -305,12 +332,14 @@ int main()
 
 			std::cout << "\n";
 
+			if (u_input != 5)
+			{
+				std::cout << "Podaj prosze druga liczbe" << "\n\n";
 
-			std::cout << "Podaj prosze druga liczbe" << "\n\n";
+				std::cin >> liczba_dwa;
 
-			std::cin >> liczba_dwa;
-
-			std::cout << "\n";
+				std::cout << "\n";
+			}
 
 			switch (u_input)
 			{
@@ -341,6 +370,17 @@ int main()
 				std::cout << "Twoj wynik wynosi: " << multiply(liczba_jeden, liczba_dwa) << "\n\n";
 				break;
 
+			case 5:
+
+				while (liczba_jeden < 0)
+				{
+					std::cout << "Liczba podana nie jest liczbą naturalna (wieksza lub rowna 0), sprobuj jeszcze raz: " << "\n\n";
+					std::cin >> liczba_jeden;
+					std::cout << "\n\n";
+				}
+				std::cout << "Twoj wynik wynosi: " << factorial(liczba_jeden) << "\n\n";
+				break;
+
 			default:
 				std::cout << "Niepoprawna opcja" << "\n";
 				break;
@@ -352,6 +392,7 @@ int main()
 		}
 
 		std::cout << "Twoja petla wykonala sie " << iterator << " razy. Mam nadzieje, ze dobrze sie bawiles, uzytkowniku." << "\n\n";
+		std::cout << "https://www.google.com/search?biw=1536&bih=754&tbm=isch&sxsrf=ACYBGNRF4XLTUjSfqdKDuD3y55jcm82V1Q%3A1577469787173&sa=1&ei=W0cGXub7CeaArwS8-ZuQCg&q=i+love+you+programmer&oq=i+love+you+programmer&gs_l=img.3...9295.14170..14320...7.0..0.72.1341.21......0....1..gws-wiz-img.......35i39j0i19j0i30i19j0i8i30i19j0j0i30.PaeH4TlAxQM&ved=0ahUKEwimlbvytNbmAhVmwIsKHbz8BqIQ4dUDCAc&uact=5#imgrc=F1WSOYy3vqa2fM:" << "\n\n";
 	}
 	/*KONIEC ZADANIE 8.1*/
 }
