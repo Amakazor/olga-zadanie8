@@ -378,7 +378,15 @@ int main()
 					std::cin >> liczba_jeden;
 					std::cout << "\n\n";
 				}
-				std::cout << "Twoj wynik wynosi: " << factorial(liczba_jeden) << "\n\n";
+
+				if (liczba_jeden == 0)
+				{
+					std::cout << "Twoj wynik wynosi 1." << "\n\n";
+				}
+				else
+				{
+					std::cout << "Twoj wynik wynosi: " << factorial(liczba_jeden) << "\n\n";
+				}
 				break;
 
 			default:
